@@ -18,11 +18,9 @@ class Plate {
         return "В миске осталось " + actualFood + ". В запасе ещё " + packageCounter + " пакетов по " + capacityPackage + " еды";
     }
 
-void info() {
-    toString();
-}
 
-    public void putFood(Plate plate) {
+
+    public void putFood() {
         if (actualFood + capacityPackage > maxValueFood) {
             System.out.println("В миске достаточно еды.");
         } else {

@@ -9,7 +9,9 @@ class Cat {
         this.appetite = appetite;
     }
 
+  void eat(Plate plate) {
 
+  }
 
 
 
