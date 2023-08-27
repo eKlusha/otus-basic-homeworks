@@ -1,13 +1,29 @@
 package ru.otus.java.basic.homeworks.homework6;
 
 class Cat {
-    String name;
-    int appetite;
-    boolean satiety;
+    private String name;
+    private int appetite;
+    private boolean satiety;
 
-    Cat(String name, int appetite, boolean satiety) {
+    public Cat(String name, int appetite, boolean satiety) {
         this.name = name;
         this.appetite = appetite;
+        this.satiety = satiety;
+    }
+
+   public String getName() {
+        return name;
+   }
+
+    public int getAppetite() {
+
+        return appetite;
+    }
+    public boolean getSatiety() {
+
+        return satiety;
+    }
+    public void setSatiety(boolean satiety) {
         this.satiety = satiety;
     }
     public String toString() {
