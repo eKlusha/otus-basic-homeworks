@@ -16,6 +16,8 @@ abstract class Animal {
         this.runningSpeed = runningSpeed;
         this.swimmingSpeed = swimmingSpeed;
         this.stamina = stamina;
+        this.runningFatigue = runningFatigue;
+        this.swimmingFatigue = swimmingFatigue;
         this.actualDistance = actualDistance;
         this.actualTime = actualTime;
     }
@@ -24,50 +26,53 @@ abstract class Animal {
         this.name = name;
         this.runningSpeed = runningSpeed;
         this.stamina = stamina;
+        this.runningFatigue = runningFatigue;
         this.actualDistance = actualDistance;
         this.actualTime = actualTime;
     }
 
-    float run(int distance) {
-        float distanceHelper = 0.0f;
-        float runTime = 0.0f;
-        if (stamina > 0) {
-            for (int i = 1; i != distance + 1; i++) {
-                if (stamina > 0) {
-                    stamina -= runningFatigue;
-                    runTime += (1 / runningSpeed);
-                    distanceHelper = i;
-                }
-            }
-            actualDistance += distanceHelper;
-            actualTime += runTime;
-            System.out.println(name + " пробежал " + actualDistance + "метров за " + runTime + " секунд и у него осталось " + stamina + " единиц выносливости");
-        } else {
-            actualTime = -1.0f;
-            System.out.println(name + " устал и больше ни куда не побежит");
+    public void run(int distance) {
+        float time = 0;
+        if (stamina > distance) {
+            stamina -= runningFatigue * distance;
+            time += (distance / runningSpeed);
+            actualDistance += distance;
+            actualTime += time;
+            System.out.println(name + " пробежал(а) " + distance + "метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
         }
-        return actualTime;
+        else if (stamina <= distance && stamina > 0) {
+            distance = stamina / runningFatigue;
+            stamina = 0;
+            time += (distance / runningSpeed);
+            actualDistance += distance;
+            actualTime += time;
+            System.out.println(name + " пробежал(а) " + distance + " метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
+        }
+        else if (stamina == 0) {
+            System.out.println(name + " устал(а) и больше ни куда не побежит");
+        }
     }
 
-    float swim(int distance) {
-        float distanceHelper = 0.0f;
-        float swimTime = 0.0f;
-        if (stamina > 0) {
-            for (int i = 1; i != distance + 1; i++) {
-                if (stamina > 0) {
-                    stamina -= swimmingFatigue;
-                    swimTime += (1 / swimmingSpeed);
-                    distanceHelper = i;
-                }
-            }
-            actualDistance += distanceHelper;
-            actualTime += swimTime;
-            System.out.println(name + " проплыл " + actualDistance + "метров за " + swimTime + " секунд и у него осталось " + stamina + " единиц выносливости");
-        } else {
-            actualTime = -1.0f;
-            System.out.println(name + " устал и больше ни куда не поплывёт");
+    public void swim(int distance) {
+        float time = 0;
+        if (stamina > distance) {
+            stamina -= swimmingFatigue * distance;
+            time += (distance / swimmingSpeed);
+            actualDistance += distance;
+            actualTime += time;
+            System.out.println(name + " проплыл(а) " + distance + "метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
         }
-        return actualTime;
+        else if (stamina <= distance && stamina > 0) {
+            distance = stamina / swimmingFatigue;
+            stamina = 0;
+            time += (distance / swimmingSpeed);
+            actualDistance += distance;
+            actualTime += time;
+            System.out.println(name + " проплыл(а) " + distance + " метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
+        }
+        else if (stamina == 0) {
+            System.out.println(name + " устал(а) и больше ни куда не поплывёт");
+        }
     }
 
     void info() {

@@ -4,7 +4,7 @@ public class HomeWork5 {
     public static void main(String[] args) {
         Cat cat = new Cat("Belphegor", 3.5f, 1000, 1, 0.0f, 0.0f);
         Dog dog = new Dog("Barbas", 12f, 1.5f, 1500, 1, 2, 0.0f, 0.0f);
-        Horse horse = new Horse("Plotva", 88f, 1.2f, 2000, 1, 4, 0.0f, 0.0f);
+        Horse horse = new Horse("Plotva", 24f, 1.2f, 2000, 1, 4, 0.0f, 0.0f);
 
         cat.run(20);
         cat.run(30);
