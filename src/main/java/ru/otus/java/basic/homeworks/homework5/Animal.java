@@ -11,7 +11,7 @@ abstract class Animal {
     protected float actualTime;
 
 
-    Animal(String name, float runningSpeed, float swimmingSpeed, int stamina, int runningFatigue, int swimmingFatigue, float actualDistance, float actualTime) {
+    public Animal(String name, float runningSpeed, float swimmingSpeed, int stamina, int runningFatigue, int swimmingFatigue, float actualDistance, float actualTime) {
         this.name = name;
         this.runningSpeed = runningSpeed;
         this.swimmingSpeed = swimmingSpeed;
@@ -22,7 +22,7 @@ abstract class Animal {
         this.actualTime = actualTime;
     }
 
-    Animal(String name, float runningSpeed, int stamina, int runningFatigue, float actualDistance, float actualTime) {
+    public Animal(String name, float runningSpeed, int stamina, int runningFatigue, float actualDistance, float actualTime) {
         this.name = name;
         this.runningSpeed = runningSpeed;
         this.stamina = stamina;
@@ -33,17 +33,17 @@ abstract class Animal {
 
     public void run(int distance) {
         float time = 0;
-        if (stamina > distance) {
+        if (stamina >= distance * runningFatigue) {
             stamina -= runningFatigue * distance;
-            time += (distance / runningSpeed);
+            time = (distance / runningSpeed);
             actualDistance += distance;
             actualTime += time;
             System.out.println(name + " пробежал(а) " + distance + "метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
         }
-        else if (stamina <= distance && stamina > 0) {
+        else if (stamina < distance * runningFatigue && stamina > 0) {
             distance = stamina / runningFatigue;
             stamina = 0;
-            time += (distance / runningSpeed);
+            time = (distance / runningSpeed);
             actualDistance += distance;
             actualTime += time;
             System.out.println(name + " пробежал(а) " + distance + " метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
@@ -55,17 +55,17 @@ abstract class Animal {
 
     public void swim(int distance) {
         float time = 0;
-        if (stamina > distance) {
+        if (stamina >= distance * swimmingFatigue) {
             stamina -= swimmingFatigue * distance;
-            time += (distance / swimmingSpeed);
+            time = (distance / swimmingSpeed);
             actualDistance += distance;
             actualTime += time;
             System.out.println(name + " проплыл(а) " + distance + "метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
         }
-        else if (stamina <= distance && stamina > 0) {
+        else if (stamina < distance * runningFatigue && stamina > 0) {
             distance = stamina / swimmingFatigue;
             stamina = 0;
-            time += (distance / swimmingSpeed);
+            time = (distance / swimmingSpeed);
             actualDistance += distance;
             actualTime += time;
             System.out.println(name + " проплыл(а) " + distance + " метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");

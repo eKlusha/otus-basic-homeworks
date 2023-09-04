@@ -3,7 +3,7 @@ package ru.otus.java.basic.homeworks.homework5;
 class Cat extends Animal {
 
 
-    Cat(String name, float runningSpeed, int stamina, int runningFatigue, float actualDistance, float actualTime) {
+    public Cat(String name, float runningSpeed, int stamina, int runningFatigue, float actualDistance, float actualTime) {
         super(name, runningSpeed, stamina, runningFatigue, actualDistance, actualTime);
     }
 
@@ -12,17 +12,17 @@ class Cat extends Animal {
         System.out.println(name + " плавает как топор и поэтому он побежал в обход");
         distance *= 2;
         float time = 0;
-        if (stamina > distance) {
+        if (stamina >= distance * runningFatigue) {
             stamina -= runningFatigue * distance;
-            time += (distance / runningSpeed);
+            time = (distance / runningSpeed);
             actualDistance += distance;
             actualTime += time;
             System.out.println(name + " пробежал(а) " + distance + "метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
         }
-        else if (stamina <= distance && stamina > 0) {
+        else if (stamina < distance * runningFatigue && stamina > 0) {
             distance = stamina / runningFatigue;
             stamina = 0;
-            time += (distance / runningSpeed);
+            time = (distance / runningSpeed);
             actualDistance += distance;
             actualTime += time;
             System.out.println(name + " пробежал(а) " + distance + "метров за " + time + " секунд и у него(неё) осталось " + stamina + " единиц выносливости");
