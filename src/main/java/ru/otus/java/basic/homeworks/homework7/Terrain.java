@@ -1,4 +1,5 @@
 package ru.otus.java.basic.homeworks.homework7;
 
-public class Terrain {
+public enum Terrain {
+    Plain, Swamp, Forest
 }
