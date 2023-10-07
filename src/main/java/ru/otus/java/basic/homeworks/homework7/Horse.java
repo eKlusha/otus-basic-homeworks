@@ -1,22 +1,34 @@
 package ru.otus.java.basic.homeworks.homework7;
 
-public class Horse implements Usable{
+import ru.otus.java.basic.homeworks.homework7.Usable;
+
+public class Horse implements Usable {
     private String type;
     private int stamina;
-    private int staminaCost;
-    public Horse(String type, int stamina, int staminaCost) {
+    private final int staminaCost = 1;
+    private boolean busy;
+
+    public Horse(String type, int stamina) {
         this.type = type;
         this.stamina = stamina;
-        this.staminaCost = staminaCost;
     }
-    @Override
-    public void drive(int distance) {
-        if (stamina >= distance * staminaCost) {
-            stamina -= distance * staminaCost;
-            System.out.println(type + " преодолела " + distance + " и у неё осталось " + stamina + " единиц(ы) выносливости");
-        }
-        if (stamina < distance * staminaCost && stamina > 0) {
 
+    public String getType() {
+        return type;
+    }
+
+    @Override
+    public void drive(int distance, Terrain terrain) {
+        if (terrain != Terrain.swamp) {
+            if (stamina >= distance * staminaCost) {
+                stamina -= distance * staminaCost;
+                System.out.println(type + " прошла " + distance + " километров и у неё осталось " + stamina + " единиц выносливости");
+            } else {
+                System.out.println("у лошади не хватает сил для преодоления дистанции");
+            }
+        } else {
+            System.out.println(type + " не может пройти по болоту");
         }
     }
 }
+
