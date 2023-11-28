@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Methods {
-    public static void minMax(Integer a, Integer b, List<Integer> list) {
-
+    public static void notCorrectMinMax(Integer a, Integer b, List<Integer> list) {
         if (list.size() == 0) {
             list.add(a);
             if (list.get(0) >= b) {
@@ -42,10 +41,28 @@ public class Methods {
         }
     }
 
+    public static List<Integer> minMax(int min, int max) {
+        List<Integer> diapason = new ArrayList<>();
+        if (max < min) {
+            System.out.println("****** рот этого казино");
+            diapason.add(-1);
+        } else if (min == max) {
+            diapason.add(0);
+        } else {
+            while (min != max) {
+                diapason.add(min);
+                min++;
+            }
+            diapason.add(max);
+        }
+        return diapason;
+
+    }
+
     public static int sumOfNumbers(List<Integer> list) {
         int sum = 0;
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) >= 5) {
+            if (list.get(i) > 5) {
                 sum += list.get(i);
             }
         }
@@ -66,41 +83,38 @@ public class Methods {
         System.out.println(list);
     }
 
-    public static List names(List<Worker> Workers) throws NullPointerException {
+    public static List<String> names(List<Worker> workers) {
         List<String> names = new ArrayList<>();
-        for (int i = 0; i < Workers.size(); i++) {
-            names.add(Workers.get(i).getName());
+        for (var w : workers) {
+            names.add(w.getName());
         }
         return names;
     }
 
-    public static List minAgeList(int minAge, List<Worker> Workers) {
+    public static List minAgeList(int minAge, List<Worker> workers) {
         List<String> names = new ArrayList<>();
-        for (int i = 0; i < Workers.size(); i++) {
-            if (Workers.get(i).getAge() >= minAge) {
-                names.add(Workers.get(i).getName());
+        for (Worker w : workers) {
+            if (w.getAge() >= minAge) {
+                names.add(w.getName());
             }
         }
         return names;
     }
 
-    public static void average(int age, List<Worker> workers) {
+    public static boolean average(int age, List<Worker> workers) {
         int middleAgeWorkers = 0;
-        for (int i = 0; i < workers.size(); i++) {
-            middleAgeWorkers += workers.get(i).getAge();
+        int counter = 0;
+        for (Worker w : workers) {
+            middleAgeWorkers += w.getAge();
+            counter++;
         }
-        if (middleAgeWorkers / workers.size() > age) {
-            System.out.println("средний возраст сотрудников превышает " + age);
-        } else {
-            System.out.println("средний возраст сотрудников не превышает " + age);
-        }
+        return (middleAgeWorkers / counter > age);
     }
-    public static Worker young (List<Worker> workers) {
-        int age = workers.get(0).getAge();
+
+    public static Worker young(List<Worker> workers) {
         Worker youngWorker = workers.get(0);
         for (int i = 1; i < workers.size(); i++) {
-            if (workers.get(i).getAge() <= age) {
-                age = workers.get(i).getAge();
+            if (workers.get(i).getAge() <= youngWorker.getAge()) {
                 youngWorker = workers.get(i);
             }
         }

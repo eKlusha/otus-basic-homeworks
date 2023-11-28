@@ -19,10 +19,9 @@ public class Worker {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Worker{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", age=").append(age);
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder("Worker");
+        sb.append(" ").append(name).append(" ");
+        sb.append(", age ").append(age);
         return sb.toString();
     }
 }
