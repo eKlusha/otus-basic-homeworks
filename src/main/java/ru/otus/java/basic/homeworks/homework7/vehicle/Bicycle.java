@@ -1,6 +1,8 @@
-package ru.otus.java.basic.homeworks.homework7;
+package ru.otus.java.basic.homeworks.homework7.vehicle;
 
-public class Bicycle implements Usable {
+import ru.otus.java.basic.homeworks.homework7.Terrain;
+
+public class Bicycle implements Drivable {
     private String type;
     private boolean busy;
 

@@ -1,10 +1,13 @@
-package ru.otus.java.basic.homeworks.homework7;
+package ru.otus.java.basic.homeworks.homework7.vehicle;
 
-class Car implements Usable {
-    String type;
-    float fuel;
-    final float fuelConsumption = 0.1f;
-    private boolean busy;
+import ru.otus.java.basic.homeworks.homework7.Terrain;
+
+public class Car extends BusyVeahicle {
+    private String type;
+    private float fuel;
+    private final float fuelConsumption = 0.1f;
+
+
 
 
     public Car(String type, int fuel) {
@@ -17,7 +20,8 @@ class Car implements Usable {
     }
 
     @Override
-    public void drive(int distance, Terrain terrain) {
+    protected void move(int distance, Terrain terrain) {
+
         if (terrain == Terrain.plain) {
             if (fuel >= distance * fuelConsumption) {
                 fuel -= distance * fuelConsumption;

@@ -1,8 +1,9 @@
-package ru.otus.java.basic.homeworks.homework7;
+package ru.otus.java.basic.homeworks.homework7.vehicle;
 
-import ru.otus.java.basic.homeworks.homework7.Usable;
 
-public class CrossCountryVehicle implements Usable {
+import ru.otus.java.basic.homeworks.homework7.Terrain;
+
+public class CrossCountryVehicle implements Drivable {
     private String type;
     private float fuel;
     private final float fuelConsumption = 0.2f;

@@ -1,8 +1,9 @@
-package ru.otus.java.basic.homeworks.homework7;
+package ru.otus.java.basic.homeworks.homework7.vehicle;
 
-import ru.otus.java.basic.homeworks.homework7.Usable;
 
-public class Horse implements Usable {
+import ru.otus.java.basic.homeworks.homework7.Terrain;
+
+public class Horse implements Drivable {
     private String type;
     private int stamina;
     private final int staminaCost = 1;
