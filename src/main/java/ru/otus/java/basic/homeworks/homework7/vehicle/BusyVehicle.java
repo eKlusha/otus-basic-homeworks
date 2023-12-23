@@ -1,20 +1,21 @@
 package ru.otus.java.basic.homeworks.homework7.vehicle;
 
-import ru.otus.java.basic.homeworks.homework7.Human;
 import ru.otus.java.basic.homeworks.homework7.Terrain;
 
-public abstract class BusyVeahicle implements Drivable {
+public abstract class BusyVehicle implements Drivable {
     protected Human driver;
 
-   @Override
-    public void drive (int distance, Terrain terrain){
+
+    @Override
+    public void drive(int distance, Terrain terrain) {
         if (driver == null) {
-            System.out.println("no drivers");
+            System.out.println("нет водителя");
         } else {
-            move(distance, terrain);
+            Human.currentTransport.move(distance, terrain);
         }
     }
-   protected abstract void move (int distance, Terrain terrain);
+
+    protected abstract void move(int distance, Terrain terrain);
 
 
     public Human getDriver() {

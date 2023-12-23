@@ -2,12 +2,10 @@ package ru.otus.java.basic.homeworks.homework7.vehicle;
 
 import ru.otus.java.basic.homeworks.homework7.Terrain;
 
-public class Car extends BusyVeahicle {
+public class Car extends BusyVehicle {
     private String type;
     private float fuel;
     private final float fuelConsumption = 0.1f;
-
-
 
 
     public Car(String type, int fuel) {
@@ -15,13 +13,8 @@ public class Car extends BusyVeahicle {
         this.fuel = fuel;
     }
 
-    public String getType() {
-        return type;
-    }
-
     @Override
     protected void move(int distance, Terrain terrain) {
-
         if (terrain == Terrain.plain) {
             if (fuel >= distance * fuelConsumption) {
                 fuel -= distance * fuelConsumption;

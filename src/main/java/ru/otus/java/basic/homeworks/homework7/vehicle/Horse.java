@@ -3,7 +3,7 @@ package ru.otus.java.basic.homeworks.homework7.vehicle;
 
 import ru.otus.java.basic.homeworks.homework7.Terrain;
 
-public class Horse implements Drivable {
+public class Horse extends BusyVehicle {
     private String type;
     private int stamina;
     private final int staminaCost = 1;
@@ -14,12 +14,8 @@ public class Horse implements Drivable {
         this.stamina = stamina;
     }
 
-    public String getType() {
-        return type;
-    }
-
     @Override
-    public void drive(int distance, Terrain terrain) {
+    protected void move(int distance, Terrain terrain) {
         if (terrain != Terrain.swamp) {
             if (stamina >= distance * staminaCost) {
                 stamina -= distance * staminaCost;
