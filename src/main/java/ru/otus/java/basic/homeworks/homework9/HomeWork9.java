@@ -4,7 +4,7 @@ import java.util.*;
 
 public class HomeWork9 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MinMaxException {
         List<Integer> numbers = new ArrayList<>();
         Worker worker1 = new Worker("Sam", 34);
         Worker worker2 = new Worker("Jim", 40);

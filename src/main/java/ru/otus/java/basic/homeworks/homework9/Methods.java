@@ -41,20 +41,19 @@ public class Methods {
         }
     }
 
-    public static List<Integer> minMax(int min, int max) {
+    public static List<Integer> minMax(int min, int max) throws MinMaxException {
         List<Integer> diapason = new ArrayList<>();
-        if (max < min) {
-            System.out.println("****** рот этого казино");
-            diapason.add(-1);
-        } else if (min == max) {
-            diapason.add(0);
-        } else {
-            while (min != max) {
+            if (max < min) {
+                System.out.println("****** рот этого казино");
+                throw new MinMaxException();
+            } else if (min == max) {
                 diapason.add(min);
-                min++;
+            } else {
+                for(int i = min; i <= max; i++) {
+                    diapason.add(i);
+                }
             }
-            diapason.add(max);
-        }
+
         return diapason;
 
     }
@@ -91,11 +90,11 @@ public class Methods {
         return names;
     }
 
-    public static List minAgeList(int minAge, List<Worker> workers) {
-        List<String> names = new ArrayList<>();
+    public static List<Worker> minAgeList(int minAge, List<Worker> workers) {
+        List<Worker> names = new ArrayList<>();
         for (Worker w : workers) {
             if (w.getAge() >= minAge) {
-                names.add(w.getName());
+                names.add(w);
             }
         }
         return names;
